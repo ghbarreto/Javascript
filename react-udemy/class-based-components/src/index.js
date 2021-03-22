@@ -1,6 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import SeasonDisplay from "./SeasonDisplay";
+import Loader from "./Loader";
 
 class App extends React.Component {
   //* Constructor is not necessary to initialize react
@@ -35,9 +36,9 @@ class App extends React.Component {
     // ? good place to remove components from the screen :)
   }
 
-  //! React says we have to define render
-  render() {
-    // ? return some jsx, nothing else
+  renderContent() {
+    // ? Helper function
+    // ? conditionals always inside the helper function
     if (this.state.errorMessage && !this.state.lat) {
       return <div>Error: {this.state.errorMessage}</div>;
     }
@@ -46,7 +47,13 @@ class App extends React.Component {
       return <SeasonDisplay lat={this.state.lat} />;
     }
 
-    return <div>Loading!</div>;
+    return <Loader message="Please accept location request" />;
+  }
+
+  //! React says we have to define render
+  render() {
+    // ? return some jsx, nothing else
+    return <div className="border red">{this.renderContent()}</div>;
   }
 }
 
