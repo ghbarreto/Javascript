@@ -32,7 +32,7 @@ class App extends React.Component {
   }
 
   componentWillUnmount() {
-    // ? good place to remove components from the screen
+    // ? good place to remove components from the screen :)
   }
 
   //! React says we have to define render
