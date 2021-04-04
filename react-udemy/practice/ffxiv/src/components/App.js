@@ -1,8 +1,26 @@
-import React from "react";
+import React, { useState } from "react";
 import GetCharacter from "./GetCharacter";
+import DisplayInformation from "./DisplayInformation";
+import Form from "./Form";
+import ServerList from "./ServerList";
 
 const App = () => {
-  return <div>{<GetCharacter />}</div>;
+  const [character, setCharacter] = useState("");
+
+  const nameChoice = (name) => {
+    const getValue = name.target.name.value;
+    name.preventDefault();
+    setCharacter(getValue);
+    console.log(getValue);
+  };
+
+  return (
+    <div>
+      <Form title="Lookup Character" onNameChange={nameChoice} />
+      <GetCharacter name={character} />
+      <ServerList />
+    </div>
+  );
 };
 
 export default App;
