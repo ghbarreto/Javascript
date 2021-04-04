@@ -1,0 +1,12 @@
+.ui.compact.menu {
+    display: -webkit-inline-box;
+    display: -ms-inline-flexbox;
+    display: flex;
+    margin: 0;
+    vertical-align: middle;
+    justify-content: center;
+}
+
+.ui.menu .pointing.dropdown.item .menu {
+    margin-top: .15em;
+}

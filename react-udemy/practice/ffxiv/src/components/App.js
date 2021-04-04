@@ -16,9 +16,10 @@ const App = () => {
 
   return (
     <div>
+      <div className="ui compact  menu">
+        <ServerList /></div>
       <Form title="Lookup Character" onNameChange={nameChoice} />
       <GetCharacter name={character} />
-      <ServerList />
     </div>
   );
 };

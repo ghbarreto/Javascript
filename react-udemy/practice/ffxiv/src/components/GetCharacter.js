@@ -6,7 +6,7 @@ const GetCharacter = ({ name }) => {
   const [values, setData] = useState([]);
 
   const fetchData = async () => {
-    const result = await xiv.get(`/character/search?name=${name}`);
+    const result = await xiv.get(`/character/search?name=Leeloo+Min`);
     const callback = result.data.Results;
     setData(callback);
     console.log("naame" + name);
