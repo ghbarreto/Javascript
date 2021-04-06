@@ -1,0 +1,10 @@
+{
+  "emmet.excludeLanguages": [
+    "markdown"
+  ],
+  "emmet.includeLanguages": {
+    "javascript": "javascriptreact"
+  },
+  "editor.quickSuggestionsDelay": 2000,
+  "editor.hover.enabled": false
+}
