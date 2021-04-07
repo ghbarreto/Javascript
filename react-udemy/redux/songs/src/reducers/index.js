@@ -1,3 +1,5 @@
+import { combineReducers } from "redux";
+
 const songsReducer = () => {
   return [
     { title: "Living on a prayer", duration: "4:05" },
@@ -15,3 +17,12 @@ const selectedSongReducer = (selectedSong = null, action) => {
   }
   return selectedSong;
 };
+
+// combine the reducers to be able to be accessed in
+// the index.js combineReducers is the name of the redux library
+export default combineReducers({
+  // songs = songsObject from songsReducer
+  songs: songsReducer,
+  // selectedSong assings the value from selectedSongReducer
+  selectedSong: selectedSongReducer,
+});
