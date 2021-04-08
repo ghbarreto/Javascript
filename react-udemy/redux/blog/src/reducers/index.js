@@ -1,5 +1,6 @@
 import { combineReducers } from "redux";
+import postsReducer from "./postsReducer";
 
 export default combineReducers({
-  oidok: () => "akdopkdsadsok", // dummy data to get rid of the error
+  posts: postsReducer, // dummy data to get rid of the error of retuning undefined
 });

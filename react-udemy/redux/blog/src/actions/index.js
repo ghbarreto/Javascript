@@ -4,7 +4,6 @@ import jsonPlaceholder from "../apis/jsonPlaceholder";
 export const fetchPosts = () => async dispatch => {
   // cannot use async/await inside here without a middleware
   // with thunk i can return a function inside an action
-
   const response = await jsonPlaceholder.get("/posts");
 
   dispatch({ type: "FETCH_POSTS", payload: response });
