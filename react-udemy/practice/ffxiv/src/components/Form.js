@@ -1,15 +1,25 @@
 import React from "react";
+import "./Form.css";
 
-const Form = ({ title, onNameChange }) => {
+const Form = ({ title, value }) => {
   return (
-    <form onSubmit={onNameChange}>
-      <label>
-        {title}:
-        <br />
-        <input id="name" name="name" type="text" />
-        <button type="submit">Search</button>
-      </label>
-    </form>
+    <div className="ui form">
+      <form>
+        <label className="label">{title}</label>
+        <div className="ui search">
+          <div className="ui icon input">
+            <input
+              className="prompt"
+              id="name"
+              name="name"
+              type="text"
+              onChange={e => value(e.target.value)}
+            />
+            <i className="search icon"></i>
+          </div>
+        </div>
+      </form>
+    </div>
   );
 };
 

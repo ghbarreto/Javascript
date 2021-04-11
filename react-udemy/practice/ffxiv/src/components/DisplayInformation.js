@@ -1,24 +1,47 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
-const DisplayInformation = ({ name, image, rank, server, rankFeast, ID }) => {
+import "./DisplayInformation.css";
+
+const DisplayInformation = ({
+  name,
+  image,
+  rank,
+  server,
+  rankFeast,
+  ID,
+  characterDetails,
+}) => {
+  // Displaying character information
   return (
-    <div>
-      <img src={image} alt="image" />
-      <h3>{name}</h3>
-      <React.Fragment>
-        <strong>Server: </strong>
-        {server}
-      </React.Fragment>{" "}
-      <p>
-        <strong>Rank</strong>: {rank}
-      </p>
-      <p>
-        <strong>Feast Matches:</strong> {rankFeast}
-      </p>
-      <form>
-        <button>{ID}Learn More</button>
-      </form>
-      <hr />
+    <div className="ui cards">
+      <div className="card ">
+        <div className="image">
+          <img src={image} alt="character_image" />
+        </div>
+        <div className="content">
+          <div className="header">{name}</div>
+        </div>
+        <div className="descriptions">
+          <div className="meta">
+            <span style={{ color: "black", fontWeight: "bold" }}>Server:</span>
+            <a>
+              <strong> {server}</strong>
+            </a>
+          </div>
+          <div className="description">
+            <strong>Rank</strong>: {!rank ? "None" : rank} <br />
+            <strong>Feast Matches:</strong> {rankFeast}
+          </div>
+        </div>
+        <div className="extra content">
+          <Link to={`/character/details/${ID}`} exact>
+            <button value={ID} className="ui button secondary right floated">
+              Details
+            </button>
+          </Link>
+        </div>
+      </div>
     </div>
   );
 };

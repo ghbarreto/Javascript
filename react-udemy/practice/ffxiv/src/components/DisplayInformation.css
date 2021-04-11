@@ -1,0 +1,27 @@
+.ui.container {
+  overflow: auto;
+  white-space: nowrap;
+}
+
+div.render > div > div {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+div.header {
+  text-align: center;
+}
+
+div.descriptions {
+  margin-left: 10px;
+  margin-bottom: 20px;
+}
+
+div.ui.cards {
+  margin: 15px;
+  padding: 15px;
+  width: 260px;
+}
+.ui.card {
+  display: inline-block;
+}

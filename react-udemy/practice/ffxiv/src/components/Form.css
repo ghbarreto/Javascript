@@ -1,0 +1,24 @@
+div.ui.form {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+
+span.margins {
+  margin-bottom: 50px;
+}
+
+label.label {
+  display: inline-block;
+  font-size: 25px;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+div.ui.icon.input {
+  width: 600px;
+}
+
+input#name.prompt {
+  border-radius: 300px;
+}

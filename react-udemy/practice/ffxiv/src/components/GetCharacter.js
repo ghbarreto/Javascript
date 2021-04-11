@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+
 import xiv from "../api/axios";
 import DisplayInformation from "./DisplayInformation";
 
@@ -6,19 +7,27 @@ const GetCharacter = ({ name }) => {
   const [values, setData] = useState([]);
 
   const fetchData = async () => {
-    const result = await xiv.get(`/character/search?name=Leeloo+Min`);
+    if (!name) {
+      return;
+    }
+    const result = await xiv.get(`/character/search?name=${name}`);
     const callback = result.data.Results;
     setData(callback);
-    console.log("naame" + name);
   };
-  console.log(values);
+
   useEffect(() => {
-    fetchData();
+    const timer = setTimeout(() => {
+      fetchData();
+    }, 1000);
+
+    return () => clearTimeout(timer);
   }, [name]);
 
+  // displaying the character information
   return (
     <div>
       <div>
+        {!values ? "Loading" : ""}
         {values.map((value, i) => {
           return (
             <DisplayInformation

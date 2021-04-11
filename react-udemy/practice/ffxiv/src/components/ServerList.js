@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import xiv from "../api/axios";
-import './ServerList.css'
+import "./ServerList.css";
 
 const ServerList = () => {
   const [servers, setServer] = useState([]);
@@ -15,21 +15,29 @@ const ServerList = () => {
     fetchServerList();
   }, []);
 
-  return Object.keys(servers).map((server) => {
+  // Displaying the server info and databases
+  return Object.keys(servers).map(server => {
     return (
-      <div className="ui pointing dropdown link simple item eight column row">
-        <span id={server} className="text " >{server}</span>
+      <div
+        key={server}
+        className="ui pointing dropdown link simple item eight column row"
+      >
+        <span id={server} className="text ">
+          {server}
+        </span>
 
         <i className="dropdown  icon"></i>
         <div className="menu">
           <div className="header">Servers</div>
-          <div class="divider"></div>
-          {servers[server].map((i) => {
-            return <div className="item" key={i}>{i}</div>;
+          <div className="divider"></div>
+          {servers[server].map(i => {
+            return (
+              <div key={i} className="item">
+                {i}
+              </div>
+            );
           })}
         </div>
-
-
       </div>
     );
   });
