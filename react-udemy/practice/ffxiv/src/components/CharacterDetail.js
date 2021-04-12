@@ -1,21 +1,25 @@
 import React, { useEffect, useState } from "react";
+import { getActiveClassData, getArmorEquipped } from "./helpers/helper";
 import "./CharacterDetail.css";
 import xiv from "../api/axios";
 
 const CharacterDetail = id => {
-  const [details, setDetails] = useState([]);
+  const [details, setDetails] = useState([null]);
   const value = id.match.params.id;
 
   const fetchCharacterDetails = async () => {
     const request = await xiv(`/character/${value}`);
     const response = request.data.Character;
     setDetails(response);
-    console.log(response);
   };
 
   useEffect(() => {
     fetchCharacterDetails();
   }, []);
+
+  useEffect(() => {
+    getActiveClassData(details);
+  }, [details]);
 
   return (
     <div>
@@ -28,7 +32,7 @@ const CharacterDetail = id => {
             <div className=" ui content floatRight">
               <h3 className="header">{details.Name}</h3>
               <div className="meta ">
-                <span>Description</span>
+                <span>{getActiveClassData(details)}</span>
               </div>
               <div className="description">
                 <p></p>
