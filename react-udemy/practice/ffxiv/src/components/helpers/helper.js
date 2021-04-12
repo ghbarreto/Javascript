@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import xiv from "../../api/axios";
 
 // Get current character class
@@ -21,4 +21,10 @@ export const getArmorEquipped = async details => {
 export const serverList = (props = []) => {
   console.log(props);
   return props;
+};
+
+export const NameChoice = event => {
+  const [name, setName] = useState("");
+  setName(event);
+  return name;
 };

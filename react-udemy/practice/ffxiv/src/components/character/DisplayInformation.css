@@ -25,3 +25,13 @@ div.ui.cards {
 .ui.card {
   display: inline-block;
 }
+
+div.image {
+  display: flex;
+  justify-content: center;
+}
+
+div.ui.six.doubling.card {
+  margin: 30px;
+  width: 210px;
+}

@@ -2,3 +2,6 @@ div.center {
   display: flex;
   justify-content: center;
 }
+select.ui.selection.dropdown {
+  height: 100%;
+}

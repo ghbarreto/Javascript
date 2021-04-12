@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { getActiveClassData, getArmorEquipped } from "./helpers/helper";
+import { getActiveClassData, getArmorEquipped } from "../helpers/helper";
 import "./CharacterDetail.css";
-import xiv from "../api/axios";
+import xiv from "../../api/axios";
 
 const CharacterDetail = id => {
   const [details, setDetails] = useState([null]);

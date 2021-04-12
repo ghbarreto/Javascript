@@ -1,12 +1,13 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { BrowserRouter, Route } from "react-router-dom";
 
-import CharacterDetail from "./CharacterDetail";
-import GetCharacter from "./GetCharacter";
+import CharacterDetail from "./character/CharacterDetail";
+import GetCharacter from "./character/GetCharacter";
 import Form from "./Form";
 import Header from "./Header";
 import Home from "./Home";
-import ServerList from "./ServerList";
+import ServerList from "./server/ServerList";
+import MarketBoard from "./marketboard/MarketBoard";
 
 const App = () => {
   const [character, setCharacter] = useState("");
@@ -14,8 +15,7 @@ const App = () => {
   const [serv, setServ] = useState([]);
 
   const nameChoice = name => {
-    const getValue = name;
-    setCharacter(getValue);
+    setCharacter(name);
   };
 
   const getServers = servers => {
@@ -31,9 +31,10 @@ const App = () => {
       <div>
         <Header />
         <h1 />
+        <Route path="/" exact component={Home}></Route>
+        <Route path="/marketboard" component={MarketBoard}></Route>
         <Route path="/character/details/:id" component={CharacterDetail} />
-        <Route path="/" exact component={Home} />
-        <Route path="/character/search" exact>
+        <Route path="/character/search">
           <ServerList servers={getServers} />
           <Form
             title="Character Search"
@@ -49,16 +50,3 @@ const App = () => {
 };
 
 export default App;
-
-// <div class="ui right action left icon input">
-//   <i class="search icon"></i>
-//   <input type="text" placeholder="Search">
-//   <div class="ui basic floating dropdown button">
-//     <div class="text">This Page</div>
-//     <i class="dropdown icon"></i>
-//     <div class="menu">
-//       <div class="item">This Organization</div>
-//       <div class="item">Entire Site</div>
-//     </div>
-//   </div>
-// </div>

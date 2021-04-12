@@ -14,13 +14,14 @@ const DisplayInformation = ({
 }) => {
   // Displaying character information
   return (
-    <div className="ui cards">
-      <div className="card ">
+    <div className="ui six doubling red card">
+      <div className="card">
         <div className="image">
           <img src={image} alt="character_image" />
         </div>
         <div className="content">
           <div className="header">{name}</div>
+          <hr />
         </div>
         <div className="descriptions">
           <div className="meta">
