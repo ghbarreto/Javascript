@@ -16,7 +16,7 @@ const ServerList = props => {
     fetchServerList();
   }, []);
 
-  return <div></div>;
+  return <div>{props.servers(servers)}</div>;
 };
 
 export default ServerList;

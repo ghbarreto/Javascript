@@ -10,6 +10,7 @@ import ServerList from "./ServerList";
 
 const App = () => {
   const [character, setCharacter] = useState("");
+  const [serverChoice, setServerChoice] = useState([]);
   const [serv, setServ] = useState([]);
 
   const nameChoice = name => {
@@ -21,6 +22,10 @@ const App = () => {
     setServ(servers);
   };
 
+  const selection = server => {
+    setServerChoice(server.target.value);
+  };
+
   return (
     <BrowserRouter>
       <div>
@@ -30,8 +35,13 @@ const App = () => {
         <Route path="/" exact component={Home} />
         <Route path="/character/search" exact>
           <ServerList servers={getServers} />
-          <Form title="Character Search" value={nameChoice} options={serv} />
-          <GetCharacter name={character} />
+          <Form
+            title="Character Search"
+            value={nameChoice}
+            options={serv}
+            selection={selection}
+          />
+          <GetCharacter name={character} server={serverChoice} />
         </Route>
       </div>
     </BrowserRouter>

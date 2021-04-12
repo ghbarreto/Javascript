@@ -3,14 +3,16 @@ import React, { useState, useEffect } from "react";
 import xiv from "../api/axios";
 import DisplayInformation from "./DisplayInformation";
 
-const GetCharacter = ({ name }) => {
+const GetCharacter = ({ name, server }) => {
   const [values, setData] = useState([]);
 
   const fetchData = async () => {
     if (!name) {
       return;
     }
-    const result = await xiv.get(`/character/search?name=${name}`);
+    const result = await xiv.get(
+      `/character/search?name=${name}&server=${server}`
+    );
     const callback = result.data.Results;
     setData(callback);
   };
