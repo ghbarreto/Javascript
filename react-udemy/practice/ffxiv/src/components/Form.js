@@ -3,14 +3,22 @@ import "./Form.css";
 
 const Form = ({ title, value, options = [], selection, placeholder }) => {
   const displayOptions = () => {
+    // Display servers
     return Object.keys(options).map(option => {
-      return options[option].map(i => {
-        return (
-          <option key={i} value={i}>
-            {i}
-          </option>
-        );
-      });
+      return (
+        <option key={option} value={option}>
+          {option}
+        </option>
+      );
+
+      // Display datacenters
+      // return options[option].map(i => {
+      //   return (
+      //     <option key={i} value={i}>
+      //       {i}
+      //     </option>
+      //   );
+      // });
     });
   };
 

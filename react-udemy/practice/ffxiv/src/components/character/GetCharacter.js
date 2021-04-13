@@ -18,7 +18,7 @@ const GetCharacter = ({ name, server }) => {
     }
 
     const result = await xiv.get(
-      `/character/search?name=${name}&server=${server}`
+      `/character/search?name=${name}&server=_dc_${server}`
     );
 
     const callback = result.data.Results;

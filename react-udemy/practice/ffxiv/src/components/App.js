@@ -7,6 +7,7 @@ import Form from "./Form";
 import Header from "./Header";
 import Home from "./Home";
 import ServerList from "./server/ServerList";
+import MarketBoardDisplay from "./marketboard/MarketBoardDisplay";
 import MarketBoard from "./marketboard/MarketBoard";
 
 const App = () => {
@@ -31,8 +32,13 @@ const App = () => {
       <div>
         <Header />
         <h1 />
-        <Route path="/" exact component={Home}></Route>
-        <Route path="/marketboard" component={MarketBoard}></Route>
+        <Route exact path="/" component={Home}></Route>
+        <Route exact exact path="/marketboard" component={MarketBoard}></Route>
+        <Route
+          exact
+          path="/marketboard/:id"
+          component={MarketBoardDisplay}
+        ></Route>
         <Route path="/character/details/:id" component={CharacterDetail} />
         <Route path="/character/search">
           <ServerList servers={getServers} />
