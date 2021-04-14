@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import xiv from "../../api/axios";
 import { marketboard } from "../../api/marketboard";
 import Moment from "react-moment";
+import { totalSort } from "../helpers/helper";
 import NumberFormat from "react-number-format";
 
 const MarketBoardDisplay = itemToDisplay => {
@@ -16,8 +17,17 @@ const MarketBoardDisplay = itemToDisplay => {
       console.clear();
     }
   };
+  // Sorting items by total price (asc)
+  itemsMarketboard.listings !== undefined ? (
+    Object.keys(itemsMarketboard.listings).map(e => {
+      itemsMarketboard.listings.sort(
+        (a, b) => a.total - b.total || a.pricePerUnit - b.pricePerUnit
+      );
+    })
+  ) : (
+    <div></div>
+  );
 
-  // console.log(itemsMarketboard.listings);
   useEffect(() => {
     retrieveItems();
   }, [itemToDisplay]);
@@ -41,9 +51,6 @@ const MarketBoardDisplay = itemToDisplay => {
         <tbody>
           {itemsMarketboard.listings !== undefined ? (
             Object.keys(itemsMarketboard.listings).map(e => {
-              const arr = [];
-              arr.push(itemsMarketboard.listings[e].total);
-
               return (
                 <tr key={itemsMarketboard.listingID}>
                   <td data-label="Name">
