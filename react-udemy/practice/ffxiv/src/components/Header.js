@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const Header = () => {
   return (
-    <div className="ui fluid three item menu">
+    <div className="ui fluid four item menu">
       <Link to="/" className="item">
         Home
       </Link>
@@ -12,6 +12,9 @@ const Header = () => {
       </Link>
       <Link to="/marketboard" className="item">
         Market Board
+      </Link>
+      <Link to="/crafting" className="item">
+        Crafting
       </Link>
     </div>
   );

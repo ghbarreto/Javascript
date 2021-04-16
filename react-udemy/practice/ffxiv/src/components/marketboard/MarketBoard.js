@@ -17,10 +17,11 @@ const MarketBoard = ({ abc }) => {
   return (
     <div style={{ fontFamily: "Roboto, sans-serif" }}>
       <Form value={itemName} />
-      <div className="ui grid ">
-        <div className="eight column row">
-          <RetrieveItems itemName={item} itemSelectedId={itemSelectedId} />
-        </div>
+      <div
+        className="class ui grid"
+        style={{ gridGap: "10px", marginLeft: "20px" }}
+      >
+        <RetrieveItems itemName={item} itemSelectedId={itemSelectedId} />
       </div>
     </div>
   );

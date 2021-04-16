@@ -13,18 +13,40 @@ const RetrieveItems = ({ itemName, itemSelectedId }) => {
   };
 
   useEffect(() => {
-    retrieveInformation();
+    const timer = setTimeout(() => {
+      retrieveInformation();
+    }, 600);
+    return () => clearTimeout(timer);
   }, [itemName]);
 
   return data !== undefined ? (
     data.map(items => {
       return !items.Name ? null : (
         <React.Fragment key={items.ID}>
-          <div className="column">
-            <img src={`http://xivapi.com${items.Icon}`} />
-            {items.Name}
+          <div
+            className="two wide column"
+            style={{
+              textAlign: "center",
+              marginTop: "50px",
+              border: "1px solid lightgray",
+              backgroundColor: "lightgray",
+              gridGap: "3px",
+              borderRadius: "20px",
+              width: "300px",
+            }}
+          >
             <Link to={`/marketboard/${items.ID}`}>
+              <img
+                className="ui avatar image"
+                style={{ margin: "10px" }}
+                src={`http://xivapi.com${items.Icon}`}
+              />
+
+              <div className="content" style={{ margin: "10px" }}>
+                {items.Name}
+              </div>
               <button
+                className="ui mini primary button"
                 value={items.ID}
                 onClick={e => itemSelectedId(e.target.value)}
               >
