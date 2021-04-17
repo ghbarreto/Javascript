@@ -10,15 +10,6 @@ const Form = ({ title, value, options = [], selection, placeholder }) => {
           {option}
         </option>
       );
-
-      // Display datacenters
-      // return options[option].map(i => {
-      //   return (
-      //     <option key={i} value={i}>
-      //       {i}
-      //     </option>
-      //   );
-      // });
     });
   };
 

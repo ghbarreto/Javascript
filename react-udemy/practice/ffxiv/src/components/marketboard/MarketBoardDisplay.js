@@ -3,13 +3,14 @@ import { marketboard } from "../../api/marketboard";
 import xiv from "../../api/axios";
 import Moment from "react-moment";
 import NumberFormat from "react-number-format";
+import MarketBoardMoreDetails from "./MarketBoardMoreDetails";
 import "./MarketBoardDisplay.css";
 
 const MarketBoardDisplay = itemToDisplay => {
   const [itemsMarketboard, setItems] = useState({});
   const [itemDescription, setItemDescription] = useState([]);
-
   const value = itemToDisplay.match.params.id;
+  const server = itemToDisplay.match.params.dc;
   const retrieveItems = async () => {
     try {
       const response = await marketboard.get(`${value}`);
@@ -18,6 +19,16 @@ const MarketBoardDisplay = itemToDisplay => {
       // console.clear();
     }
   };
+
+  itemsMarketboard.listings !== undefined ? (
+    Object.keys(itemsMarketboard.listings).map(e => {
+      return itemsMarketboard.listings.sort(
+        (a, b) => a.total - b.total || a.pricePerUnit - b.pricePerUnit
+      );
+    })
+  ) : (
+    <div></div>
+  );
   const retrieveName = async () => {
     try {
       const response = await xiv.get(`/item/${value}`);
@@ -27,15 +38,6 @@ const MarketBoardDisplay = itemToDisplay => {
     }
   };
   // Sorting items by total price (asc)
-  itemsMarketboard.listings !== undefined ? (
-    Object.keys(itemsMarketboard.listings).map(e => {
-      itemsMarketboard.listings.sort(
-        (a, b) => a.total - b.total || a.pricePerUnit - b.pricePerUnit
-      );
-    })
-  ) : (
-    <div></div>
-  );
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -55,21 +57,23 @@ const MarketBoardDisplay = itemToDisplay => {
         <div class="content">
           <div class="header">{itemDescription.Name}</div>
           <p>{itemDescription.Description_en}</p>
+          <p>
+            <strong>Last updated</strong>{" "}
+            <Moment format="DD-MM-YYYY HH:mm">
+              {itemsMarketboard.lastUploadTime}
+            </Moment>
+          </p>
         </div>
       </div>
+
       <div className="tableDiv">
         <table className="ui collapsing table">
           <thead>
             <tr>
               <th>Retainer's Name</th>
-              {/* <th>Average Price</th> */}
-              {/* <th>High Quality</th> */}
-              {/* <th>Average Price HQ</th> */}
-              {/* <th>Max Price</th> */}
-              {/* <th>Price per Unit</th> */}
+
               <th>Quantity</th>
               <th>Total</th>
-              <th>Last Updated</th>
             </tr>
           </thead>
           <tbody>
@@ -94,11 +98,6 @@ const MarketBoardDisplay = itemToDisplay => {
                         {itemsMarketboard.listings[e].total}
                       </NumberFormat>
                     </td>
-                    <td data-label="Job">
-                      <Moment format="DD-MM-YYYY HH:mm">
-                        {itemsMarketboard.lastUploadTime}
-                      </Moment>
-                    </td>
                   </tr>
                 );
               })
@@ -107,6 +106,12 @@ const MarketBoardDisplay = itemToDisplay => {
             )}
           </tbody>
         </table>
+        <MarketBoardMoreDetails
+          itemDescription={itemDescription}
+          itemsMarketboard={itemsMarketboard}
+          itemToDisplay={itemToDisplay}
+          server={server}
+        />
       </div>
     </div>
   );

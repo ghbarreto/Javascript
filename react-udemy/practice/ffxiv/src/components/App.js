@@ -33,10 +33,10 @@ const App = () => {
         <Header />
         <h1 />
         <Route exact path="/" component={Home}></Route>
-        <Route exact exact path="/marketboard" component={MarketBoard}></Route>
+        <Route exact path="/marketboard" component={MarketBoard}></Route>
         <Route
           exact
-          path="/marketboard/:id"
+          path="/marketboard/:dc/:id"
           component={MarketBoardDisplay}
         ></Route>
         <Route path="/character/details/:id" component={CharacterDetail} />

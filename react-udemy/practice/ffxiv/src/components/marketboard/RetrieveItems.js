@@ -2,9 +2,8 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import xiv from "../../api/axios";
 
-const RetrieveItems = ({ itemName, itemSelectedId }) => {
+const RetrieveItems = ({ itemName, itemSelectedId, server }) => {
   const [data, setData] = useState([]);
-
   const retrieveInformation = async () => {
     const response = await xiv.get(
       `/search?filters=IsUntradable=0&string=${itemName}&indexes=item`
@@ -35,7 +34,7 @@ const RetrieveItems = ({ itemName, itemSelectedId }) => {
               width: "300px",
             }}
           >
-            <Link to={`/marketboard/${items.ID}`}>
+            <Link serverC={server} to={`/marketboard/${server}/${items.ID}`}>
               <img
                 className="ui avatar image"
                 style={{ margin: "10px" }}

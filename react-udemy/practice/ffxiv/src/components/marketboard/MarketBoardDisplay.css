@@ -1,6 +1,6 @@
 div.tableDiv {
   display: flex;
-  justify-content: center;
+  justify-content: space-evenly;
   margin-top: 50px;
 }
 .ui.icon.message > .icon:not(.close) {
