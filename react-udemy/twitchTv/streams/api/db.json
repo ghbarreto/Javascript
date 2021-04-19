@@ -1,9 +1,16 @@
 {
   "streams": [
     {
-      "title": "My stream",
-      "description": "great stream",
+      "title": "Hello",
+      "description": "World",
+      "userId": "111835363321617708876",
       "id": 1
+    },
+    {
+      "title": "Trying",
+      "description": "Did it work?",
+      "userId": "111835363321617708876",
+      "id": 2
     }
   ]
 }
