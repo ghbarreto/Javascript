@@ -4,19 +4,19 @@ import xiv from "../../api/axios";
 
 const RetrieveItems = ({ itemName, itemSelectedId, server }) => {
   const [data, setData] = useState([]);
+
   const retrieveInformation = async () => {
     const response = await xiv.get(
       `/search?filters=IsUntradable=0&string=${itemName}&indexes=item`
     );
     setData(response.data.Results);
   };
-
   useEffect(() => {
     const timer = setTimeout(() => {
       retrieveInformation();
     }, 600);
     return () => clearTimeout(timer);
-  }, [itemName]);
+  }, [itemName, server]);
 
   return data !== undefined ? (
     data.map(items => {

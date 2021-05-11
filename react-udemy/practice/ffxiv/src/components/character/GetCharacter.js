@@ -31,11 +31,14 @@ const GetCharacter = ({ name, server }) => {
       fetchData();
     }, 600);
     return () => clearTimeout(timer);
-  }, [name]);
+  }, [name, server]);
 
   // displaying the character information
+  if (!values) {
+    return <div></div>;
+  }
   return loading ? (
-    values === undefined || values.length == 0 ? (
+    values.length == 0 ? (
       <div>Found Nothing</div>
     ) : (
       <div>

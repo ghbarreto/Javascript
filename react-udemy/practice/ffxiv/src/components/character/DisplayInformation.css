@@ -8,10 +8,6 @@ div.render > div > div {
   flex-wrap: wrap;
 }
 
-div.header {
-  text-align: center;
-}
-
 div.descriptions {
   margin-left: 10px;
   margin-bottom: 20px;

@@ -118,11 +118,3 @@ const MarketBoardDisplay = itemToDisplay => {
 };
 
 export default MarketBoardDisplay;
-/* <td data-label="Age">{itemsMarketboard.averagePriceHQ}</td> */
-/* <td data-label="Name">{itemsMarketboard.maxPrice}</td> */
-/* <td data-label="Job">
-                    {itemsMarketboard.listings[e].pricePerUnit}
-                  </td> */
-
-/* <td data-label="Age">{itemsMarketboard.averagePrice}</td> */
-/* {itemsMarketboard.averagePrice} */
